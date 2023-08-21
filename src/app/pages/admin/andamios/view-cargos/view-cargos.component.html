@@ -1,0 +1,84 @@
+
+<mat-card>
+
+  <mat-card-header>
+
+
+      <div class = "container-fluid">
+        <div class = "row">
+          <div class = "col-md-11">
+            <mat-card-title>Cargos</mat-card-title>
+            <mat-card-subtitle>Lista de cargos</mat-card-subtitle>
+          </div>
+
+          <div class = "col-md-1">
+            <mat-icon
+              (click)="exporter.exportTable('xlsx', {fileName:'test', sheet: 'sheet_name', Props: {Author: 'Talha'}})" >
+              <span class="material-symbols-outlined">cloud_download</span>
+            </mat-icon>
+          </div>
+        </div>
+
+    </div>
+
+  </mat-card-header>
+  <mat-card-content>
+
+    <p>En esta sección se listan todos los cargos registrados en el sistema.</p>
+
+  </mat-card-content>
+  <br>
+
+<table matTableExporter mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" #exporter="matTableExporter"
+       class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by codigo">
+      No.
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nombre">
+      Nombre
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by descripcion">
+      descripcion
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+  </ng-container>
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by estado">
+      Estado
+    </th>
+    <td mat-cell *matCellDef="let element"> <a  *ngIf="element.estado">Activo</a><a  *ngIf="!element.estado" >Inactivo</a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef >
+      Acciones
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon  [routerLink]="'/admin/edit-cargo/'+element.id">edit</mat-icon>
+      <mat-icon  (click)="eliminarCargo(element.id)" >delete</mat-icon>
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  <div class="container text-center mt20 mb20">
+    <button routerLink="/admin/add-cargos" mat-raised-button color="primary">Agregar cargos</button>
+    </div>
+</mat-card>
+

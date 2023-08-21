@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-action-list>
+    <mat-card-subtitle><div mat-subheader>Categorías disponibles</div></mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <button [routerLink]="'/add-cargos/'" mat-list-item  >
+      <mat-icon>category</mat-icon> Agregar Cargos
+    </button>
+    <button mat-list-item routerLink="/user-dashboard/0" >
+      <mat-icon >quiz</mat-icon> Exámenes
+    </button>
+    <button [routerLink]="'/user-dashboard/'+c.categoriaId" mat-list-item *ngFor="let c of categories" >
+      <mat-icon>category</mat-icon> {{c.titulo}}
+    </button>
+  </mat-action-list>
+</mat-card>
+
