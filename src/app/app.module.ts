@@ -53,6 +53,12 @@ import { EditCargosComponent } from './pages/admin/andamios/edit-cargos/edit-car
 import {MatSortModule} from '@angular/material/sort';
 import { MatTableModule} from '@angular/material/table';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { AddRolComponent } from './pages/admin/Usuarios/add-rol/add-rol.component';
+import { EditRolComponent } from './pages/admin/Usuarios/edit-rol/edit-rol.component';
+import { ViewRolComponent } from './pages/admin/Usuarios/view-rol/view-rol.component';
+import { EditUsuarioComponent } from './pages/admin/Usuarios/edit-usuario/edit-usuario.component';
+import { ViewUsuarioComponent } from './pages/admin/Usuarios/view-usuario/view-usuario.component';
+import { AddUsuarioComponent } from './pages/admin/Usuarios/add-usuario/add-usuario.component';
 
 
 @NgModule({
@@ -81,7 +87,10 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     StartComponent,
     AddCargoComponent,
     ViewCargosComponent,
-    EditCargosComponent
+    EditCargosComponent,
+    AddRolComponent,
+    EditRolComponent
+,ViewRolComponent, EditUsuarioComponent, ViewUsuarioComponent, AddUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<mat-card>
+  <div class="mt10 mb20 ml10">
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="ml20">Agregar nuevo rol</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="bootstrap-wrapper">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+
+            <form (ngSubmit)="formSubmit()">
+              <section [formGroup]="rol">
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>Titulo</mat-label>
+                  <input required autofocus type="text" name="nombre" matInput placeholder="Digite el nombre del rol"
+                         formControlName="nombre"
+                  >
+                </mat-form-field>
+
+                <div class="container text-center mt15">
+                  <button  mat-raised-button color="primary">Guardar</button>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </div>
+</mat-card>

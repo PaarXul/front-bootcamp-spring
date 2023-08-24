@@ -1,0 +1,72 @@
+<mat-card>
+  <div class="mt10 mb20 ml10">
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="ml20">Agregar nuevo Usuario</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="bootstrap-wrapper">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+
+            <form (ngSubmit)="formSubmit()">
+              <section [formGroup]="usuario">
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>Run</mat-label>
+                  <input required autofocus type="text" name="run" matInput placeholder="Digite el run del usuario"
+                         formControlName="run"
+                  >
+                </mat-form-field>
+
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>Nombre</mat-label>
+                  <input required autofocus type="text" name="nombre" matInput placeholder="Digite el Nombre del usuario"
+                         formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>apellido</mat-label>
+                  <input required autofocus type="text" name="apellido" matInput placeholder="Digite el username del apellido"
+                         formControlName="apellido">
+                </mat-form-field>
+
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>username</mat-label>
+                  <input required autofocus type="text" name="username" matInput placeholder="Digite el username del usuario"
+                         formControlName="username">
+                </mat-form-field>
+
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>email</mat-label>
+                  <input required autofocus type="text" name="email" matInput placeholder="Digite el username del usuario"
+                         formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>password</mat-label>
+                  <input required autofocus type="text" name="password" matInput placeholder="Digite el password del usuario"
+                         formControlName="password">
+                </mat-form-field>
+
+                <mat-form-field class="w100" appearance="outline">
+                  <mat-label>telefono</mat-label>
+                  <input required autofocus type="text" name="telefono" matInput placeholder="Digite el telefono del usuario"
+                         formControlName="telefono">
+                </mat-form-field>
+
+                <mat-label id="estado-cargo-label">Estado del usuario: </mat-label>
+                <mat-checkbox formControlName="enabled" >
+                  <span>Activo</span>
+                </mat-checkbox>
+
+                <div class="container text-center mt15">
+                  <button  mat-raised-button color="primary">Guardar</button>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </div>
+</mat-card>

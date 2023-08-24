@@ -23,6 +23,12 @@ import { ActualizarExamenComponent } from './pages/admin/ejemplo-Examenes/actual
 import {AddCargoComponent} from "./pages/admin/andamios/add-cargo/add-cargo.component";
 import {ViewCargosComponent} from "./pages/admin/andamios/view-cargos/view-cargos.component";
 import {EditCargosComponent} from "./pages/admin/andamios/edit-cargos/edit-cargos.component";
+import {ViewRolComponent} from "./pages/admin/Usuarios/view-rol/view-rol.component";
+import {AddRolComponent} from "./pages/admin/Usuarios/add-rol/add-rol.component";
+import {EditRolComponent} from "./pages/admin/Usuarios/edit-rol/edit-rol.component";
+import {ViewUsuarioComponent} from "./pages/admin/Usuarios/view-usuario/view-usuario.component";
+import {AddUsuarioComponent} from "./pages/admin/Usuarios/add-usuario/add-usuario.component";
+import {EditUsuarioComponent} from "./pages/admin/Usuarios/edit-usuario/edit-usuario.component";
 
 const routes: Routes = [
   {
@@ -53,49 +59,29 @@ const routes: Routes = [
         path : '',
         component : WelcomeComponent
       },
-      {
-        path:'categorias',
-        component:ViewCategoriasComponent
-      },
-      {
-        path:'add-categoria',
-        component:AddCategoriaComponent
-      },
-      {
-        path:'examenes',
-        component:ViewExamenesComponent
-      },
-      {
-        path:'add-examen',
-        component:AddExamenComponent
-      },
-      {
-        path:'examen/:examenId',
-        component:ActualizarExamenComponent
-      },
-      {
-        path:'ver-preguntas/:examenId/:titulo',
-        component:ViewExamenPreguntasComponent
-      },
-      {
-        path:'add-pregunta/:examenId/:titulo',
-        component : AddPreguntaComponent
-      },
-      {
-        path:'pregunta/:preguntaId',
-        component:ActualizarPreguntaComponent
-      },
         {
-            path:'view-cargos',
-            component:ViewCargosComponent
+            path:'view-rol',
+            component:ViewRolComponent
         },
         {
-        path:'add-cargo',
-        component:AddCargoComponent
+        path:'add-rol',
+        component:AddRolComponent
         },
       {
-        path:'edit-cargo/:cargoId',
-        component:EditCargosComponent
+        path:'edit-rol/:rolId',
+        component:EditRolComponent
+      },
+      {
+        path:'view-usuario',
+        component:ViewUsuarioComponent
+      },
+      {
+        path:'add-usuario',
+        component:AddUsuarioComponent
+      },
+      {
+        path:'edit-usuario/:usuarioId',
+        component:EditUsuarioComponent
       },
     ]
   },
