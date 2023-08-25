@@ -13,7 +13,7 @@ import {MatSort, Sort} from "@angular/material/sort";
 })
 export class ViewUsuarioComponent implements OnInit{
 
-  displayedColumns: string[] = ['run', 'nombre', 'apellido', 'email','telefono','enabled','acciones'];
+  displayedColumns: string[] = ['run', 'nombre', 'apellido', 'email','telefono','enabled','authorities','acciones'];
 
   dataSource = new MatTableDataSource();
 

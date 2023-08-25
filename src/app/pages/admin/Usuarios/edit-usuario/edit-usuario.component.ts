@@ -15,6 +15,7 @@ export class EditUsuarioComponent implements OnInit {
 
 
   usuarioFG = this.formBuilder.group({
+    id: 0,
     nombre: '',
     username: '',
     enabled: true,
@@ -26,26 +27,26 @@ export class EditUsuarioComponent implements OnInit {
   })
 
   usuarioId = 0;
+  usuarionombre = '';
   usuario:any ;
 
   ngOnInit(): void {
     this.usuarioId = this.route.snapshot.params['usuarioId'];
+    this.usuarionombre = this.route.snapshot.params['nombre'];
 
     this.usuarioService.detalleusuarios(this.usuarioId).subscribe(
       (data) => {
         this.usuario = data;
-
+        this.usuarioFG.value.id = this.usuario.usuarioId;
         this.usuarioFG.controls['nombre'].setValue(this.usuario.nombre);
         this.usuarioFG.controls['username'].setValue(this.usuario.username);
+        this.usuarionombre = this.usuario.nombre;
         this.usuarioFG.controls['enabled'].setValue(this.usuario.enabled);
         this.usuarioFG.controls['run'].setValue(this.usuario.run);
         this.usuarioFG.controls['apellido'].setValue(this.usuario.apellido);
         this.usuarioFG.controls['email'].setValue(this.usuario.email);
         this.usuarioFG.controls['password'].setValue(this.usuario.password);
         this.usuarioFG.controls['telefono'].setValue(this.usuario.telefono);
-
-
-
         console.log(this.usuario);
       },
       (error) => {
@@ -65,71 +66,103 @@ export class EditUsuarioComponent implements OnInit {
   ) {
   }
 
+  usuarioPost: any = {
+    id: 0,
+    nombre: '',
+    username: '',
+    enabled: true,
+    run: '',
+    apellido:'',
+    email:'',
+    password:'',
+    telefono:''
+
+};
+
 
   public actualizarDatos(){
 
-    let usuarios = {
-      nombre: this.usuario.value.nombre?.trim(),
-      enabled: this.usuario.value.enabled,
-      run: this.usuario.value.run,
-      username: this.usuario.value.username,
-      apellido:this.usuario.value.apellido,
-      email:this.usuario.value.email,
-      password:this.usuario.value.password,
-      telefono:this.usuario.value.telefono,
+    this.usuarioPost.id =  this.usuarioId;
+    this.usuarioPost.nombre = this.usuarioFG.value.nombre;
+    this.usuarioPost.username = this.usuarioFG.value.username;
+    this.usuarioPost.enabled = this.usuarioFG.value.enabled;
+    this.usuarioPost.run = this.usuarioFG.value.run;
+    this.usuarioPost.apellido = this.usuarioFG.value.apellido;
+    this.usuarioPost.email = this.usuarioFG.value.email;
+    this.usuarioPost.password = this.usuarioFG.value.password;
+    this.usuarioPost.telefono = this.usuarioFG.value.telefono;
+    console.log("Usuario A Actualizar");
+    console.log(this.usuarioPost);
+
+
+    let usuario = {
+      id: 0,
+      nombre: this.usuarioFG.value.nombre?.trim(),
+      enabled: this.usuarioFG.value.enabled,
+      run: this.usuarioFG.value.run,
+      username: this.usuarioFG.value.username,
+      apellido:this.usuarioFG.value.apellido,
+      email:this.usuarioFG.value.email,
+      password:this.usuarioFG.value.password,
+      telefono:this.usuarioFG.value.telefono,
     }
 
-    if (usuarios.nombre == '' || usuarios.nombre == null) {
+    usuario.id = this.usuario.usuarioId;
+
+    if (usuario.nombre == '' || usuario.nombre == null) {
       this.snackBar.open('El nombre es requerido', '', {
         duration: 3000
       });
       return;
     }
 
-    if (usuarios.username == '' || usuarios.username == null) {
+    if (usuario.username == '' || usuario.username == null) {
       this.snackBar.open('La username es requerida', '', {
         duration: 3000
       });
       return;
     }
-    if (usuarios.run == '' || usuarios.run == null) {
+    if (usuario.run == '' || usuario.run == null) {
       this.snackBar.open('El run es requerido', '', {
         duration: 3000
       });
       return;
     }
-    if (usuarios.apellido == '' || usuarios.apellido == null) {
+    if (usuario.apellido == '' || usuario.apellido == null) {
       this.snackBar.open('El apellido es requerido', '', {
         duration: 3000
       });
       return;
     }
-    if (usuarios.email == '' || usuarios.email == null) {
+    if (usuario.email == '' || usuario.email == null) {
       this.snackBar.open('El email es requerido', '', {
         duration: 3000
       });
       return;
     }
-    if (usuarios.password == '' || usuarios.password == null) {
+    if (usuario.password == '' || usuario.password == null) {
       this.snackBar.open('El password es requerido', '', {
         duration: 3000
       });
       return;
     }
-    if (usuarios.telefono == '' || usuarios.telefono == null) {
+    if (usuario.telefono == '' || usuario.telefono == null) {
       this.snackBar.open('El telefono es requerido', '', {
         duration: 3000
       });
       return;
     }
+    console.log(usuario);
+    console.log(this.usuario);
 
-    this.usuarioService.actualizarusuarios(this.usuario).subscribe(
 
+
+    this.usuarioService.actualizarusuarios(this.usuarioPost).subscribe(
 
       (data) => {
         Swal.fire('usuario actualizado','El Usuario ha sido actualizado con éxito','success').then(
           (e) => {
-            this.router.navigate(['/admin/view-usuarios']);
+            this.router.navigate(['/admin/view-usuario']);
           }
         );
       },

@@ -17,6 +17,12 @@ export class EditRolComponent implements OnInit{
   ) { }
   rolId = 0;
   rol:any ;
+  rolNombre = '';
+
+  rolPost: any = {
+    id: 0,
+    nombre: '',
+  }
 
 
   ngOnInit(): void {
@@ -25,6 +31,11 @@ export class EditRolComponent implements OnInit{
     this.rolService.obtenerRol(this.rolId).subscribe(
       (data) => {
         this.rol = data;
+
+        this.rolPost.id = this.rol.id;
+        this.rolPost.nombre = this.rol.nombre;
+
+        this.rolNombre = this.rol.nombre;
         console.log(this.rol);
       },
       (error) => {
@@ -35,8 +46,8 @@ export class EditRolComponent implements OnInit{
 
 
   public actualizarDatos(){
-    console.log(this.rol);
-    this.rolService.actualizarRol(this.rol).subscribe(
+    console.log(this.rolPost);
+    this.rolService.actualizarRol(this.rolPost).subscribe(
 
 
       (data) => {

@@ -22,7 +22,7 @@ export class UsuarioService {
   }
 
   public actualizarusuarios(usuario:any){
-    return this.http.put(`${baserUrl}/usuarios/actualizar/"`,usuario);
+    return this.http.put(`${baserUrl}/usuarios/actualizar/`,usuario);
   }
 
   public eliminarusuario(usuarioId:any){
